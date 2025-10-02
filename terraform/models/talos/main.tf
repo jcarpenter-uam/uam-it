@@ -17,7 +17,7 @@ resource "proxmox_vm_qemu" "talos" {
 
   agent  = 1
   boot   = "order=virtio0;ide2;net0"
-  memory = 7168
+  memory = 6144
   cpu {
     cores = 2
   }
