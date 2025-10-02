@@ -2,7 +2,7 @@
 
 ## Talos Setup
 
-Follow these steps in order to configure and bootstrap your Talos cluster.
+Follow these steps in order to configure and bootstrap your Talos cluster. Official docs can be found [here](https://www.talos.dev/v1.11/talos-guides/install/virtualized-platforms/proxmox/).
 
 1.  **Find Your Virtio Disk**
 
@@ -23,7 +23,7 @@ Follow these steps in order to configure and bootstrap your Talos cluster.
 3.  **(Optional) Modify Control Plane Config**
 
     > For my setup, I wanted only 3 control plane nodes.
-    > To do this, uncomment the very last line in the `controlplane.yaml` config file to allow scheduling pods on the control plane nodes.
+    > To do this, uncomment the very last line in the `controlplane.yaml` config file to allow scheduling pods on the control plane nodes as explained [here](https://www.talos.dev/v1.11/talos-guides/howto/workers-on-controlplane/).
 
 4.  **Apply the Config to All Nodes**
 
