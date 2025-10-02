@@ -22,6 +22,7 @@ resource "proxmox_vm_qemu" "talos" {
     cores = 2
   }
   name        = each.key
+  onboot      = true
   scsihw      = "virtio-scsi-single"
   target_node = each.value.target_node
 
