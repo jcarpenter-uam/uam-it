@@ -3,7 +3,6 @@ kind: HelmRelease
 metadata:
   name: traefik
 spec:
-  targetNamespace: traefik
   interval: 15m
   chart:
     spec:
