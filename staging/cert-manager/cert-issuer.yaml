@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: digitalocean-clusterissuer
+spec:
+  acme:
+    email: developer@uaminc.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: digitalocean-clusterissuer-account-key
+    solvers:
+      - dns01:
+          digitalocean:
+            apiTokenSecretRef:
+              name: digitalocean-api-token-secret
+              key: api-token
