@@ -1,41 +1,58 @@
-# UAM-IT
+# UAM-IT Talos Proxmox Cluster Guide
 
-## Setup
+## Talos Setup
 
-### Find your virtio disk
+Follow these steps in order to configure and bootstrap your Talos cluster.
 
-```bash
-talosctl get disk -n $CONTROL_PLANE_IP --insecure
-```
+1.  **Find Your Virtio Disk**
 
-### Generate your config replacing install disk if necessary
+    Identify the name of the installation disk on your node.
 
-```bash
-talosctl gen config --install-disk "/dev/vda" talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --output-dir talos --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.11.0
-```
+    ```bash
+    talosctl get disk -n $CONTROL_PLANE_IP --insecure
+    ```
 
-### For my setup I wanted only 3 control plane nodes
+2.  **Generate Your Config**
 
-- uncomment the very last line in the controlplane.yaml config file to allow schedueling pods on the control plane nodes
+    Create the configuration files. If necessary, replace `/dev/vda` with the disk you found in the previous step.
 
-### Apply the config to all nodes
+    ```bash
+    talosctl gen config --install-disk "/dev/vda" talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --output-dir talos --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.11.0
+    ```
 
-```bash
-talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file talos/controlplane.yaml
-```
+3.  **(Optional) Modify Control Plane Config**
 
-### Bootstrap cluster
+    > For my setup, I wanted only 3 control plane nodes.
+    > To do this, uncomment the very last line in the `controlplane.yaml` config file to allow scheduling pods on the control plane nodes.
 
-```bash
-export TALOSCONFIG="talos/talosconfig"
-talosctl config endpoint $CONTROL_PLANE_IP
-talosctl config node $CONTROL_PLANE_IP
-```
+4.  **Apply the Config to All Nodes**
 
-```bash
-talosctl bootstrap
-```
+    Apply the generated machine configuration to your nodes.
 
-```bash
-talosctl kubeconfig .
-```
+    ```bash
+    talosctl apply-config --insecure --nodes $CONTROL_PLANE_IPS --file talos/controlplane.yaml
+    ```
+
+5.  **Bootstrap the Cluster**
+
+    Set your local `talosconfig` and bootstrap the cluster.
+
+    ```bash
+    export TALOSCONFIG="talos/talosconfig"
+    talosctl config endpoint $CONTROL_PLANE_IP
+    talosctl config node $CONTROL_PLANE_IP
+    ```
+
+    Now, run the bootstrap command:
+
+    ```bash
+    talosctl bootstrap
+    ```
+
+    Finally, generate your `kubeconfig` file in the current directory:
+    ```bash
+    talosctl kubeconfig .
+    ```
+    > Note that this will need to be moved to `~/.kube/config` for kubectl commands
+
+---
