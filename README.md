@@ -14,10 +14,10 @@ Follow these steps in order to configure and bootstrap your Talos cluster. Offic
 
 2.  **Generate Your Config**
 
-    Create the configuration files. If necessary, replace `/dev/vda` with the disk you found in the previous step.
+    Create the configuration files. If necessary, replace `/dev/vda` with the disk you found in the previous step. You can optionally add a DNS name as the `--additional-sans` this makes sure a dns name will be added to the cert, this is for kubevip later.
 
     ```bash
-    talosctl gen config --install-disk "/dev/vda" talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --output-dir talos --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.11.0
+    talosctl gen config --install-disk "/dev/vda" talos-proxmox-cluster https://$CONTROL_PLANE_IP:6443 --additional-sans $CLUSTER_DNS --output talos --install-image factory.talos.dev/installer/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515:v1.11.0
     ```
 
 3.  **(Optional) Modify Control Plane Config**
@@ -49,10 +49,10 @@ Follow these steps in order to configure and bootstrap your Talos cluster. Offic
     talosctl bootstrap
     ```
 
-    Finally, generate your `kubeconfig` file in the current directory:
+    Finally, grab your `kubeconfig` file:
+
     ```bash
-    talosctl kubeconfig .
+    talosctl kubeconfig ~/.kube/config
     ```
-    > Note that this will need to be moved to `~/.kube/config` for kubectl commands
 
 ---
