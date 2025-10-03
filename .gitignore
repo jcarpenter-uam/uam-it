@@ -9,3 +9,4 @@ talos/
 # DIRTY LITTLE SECRETS
 .env
 unsealed-secret.yaml
+flux-ssh-key*
