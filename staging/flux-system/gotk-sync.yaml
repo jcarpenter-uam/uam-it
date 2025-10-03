@@ -10,7 +10,7 @@ spec:
   ref:
     branch: master
   secretRef:
-    name: flux-system
+    name: flux-git-deploy-key
   url: ssh://git@github.com/jcarpenter-uam/uam-it
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
