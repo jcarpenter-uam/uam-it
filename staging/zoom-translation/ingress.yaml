@@ -9,13 +9,13 @@ spec:
     - match: Host(`translator.home.my-uam.com`) && PathPrefix(`/zoom`)
       kind: Rule
       services:
-        - name: zoom-rtms-server
+        - name: zoom-translation-rtms
           port: 8080
 
     - match: Host(`translator.home.my-uam.com`)
       kind: Rule
       services:
-        - name: frontend
+        - name: zoom-translation-frontend
           port: 4173
   tls:
     secretName: zoom-translation-certificate-secret
