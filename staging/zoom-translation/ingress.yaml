@@ -17,6 +17,12 @@ spec:
       services:
         - name: zoom-translation-frontend
           port: 4173
+
+    - match: Host(`translator.home.my-uam.com`) && PathPrefix(`/ws/`)
+      kind: Rule
+      services:
+        - name: zoom-translation-backend
+          port: 8001
   tls:
     secretName: zoom-translation-certificate-secret
 ---
