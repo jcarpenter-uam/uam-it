@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zoom-translation-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zoom-translation-backend
+  template:
+    metadata:
+      labels:
+        app: zoom-translation-backend
+    spec:
+      imagePullSecrets:
+        - name: jcarpenter-uam-ghcr-secret
+      containers:
+        - name: zoom-translation-backend
+          image: ghcr.io/jcarpenter-uam/zoom-translation-backend:v1.0
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: zoom-translation-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zoom-translation-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zoom-translation-frontend
+  template:
+    metadata:
+      labels:
+        app: zoom-translation-frontend
+    spec:
+      imagePullSecrets:
+        - name: jcarpenter-uam-ghcr-secret
+      containers:
+        - name: zoom-translation-frontend
+          image: ghcr.io/jcarpenter-uam/zoom-translation-frontend:v1.0
+          ports:
+            - containerPort: 4173
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zoom-translation-rtms-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zoom-translation-rtms
+  template:
+    metadata:
+      labels:
+        app: zoom-translation-rtms
+    spec:
+      imagePullSecrets:
+        - name: jcarpenter-uam-ghcr-secret
+      containers:
+        - name: zoom-translation-rtms
+          image: ghcr.io/jcarpenter-uam/zoom-translation-rtms:v1.0
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: zoom-translation-secrets

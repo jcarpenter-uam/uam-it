@@ -8,10 +8,9 @@ talos/
 
 # DIRTY LITTLE SECRETS
 .env
-unsealed-secret.yaml
+*unsealed*
 flux-ssh-key*
 
 # TEMP
 config.json
-jcarpenter-uam-ghcr-secret.yaml
 test.txt

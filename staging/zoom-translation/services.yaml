@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: zoom-translation-backend
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: zoom-translation-frontend
+  ports:
+    - protocol: TCP
+      port: 4173
+      targetPort: 4173
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zoom-rtms-server
+spec:
+  type: ClusterIP
+  selector:
+    app: zoom-translation-rtms
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

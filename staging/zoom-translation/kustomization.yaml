@@ -4,3 +4,7 @@ namespace: zoom-translation
 resources:
   - namespace.yaml
   - sealed-jcarpenter-uam-ghcr-secret.yaml
+  - sealed-zoom-translation-secrets.yaml
+  - deployments.yaml
+  - services.yaml
+  - ingress.yaml

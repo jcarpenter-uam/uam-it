@@ -1,0 +1,33 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: zoom-translation-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`translator.home.my-uam.com`) && PathPrefix(`/zoom`)
+      kind: Rule
+      services:
+        - name: zoom-rtms-server
+          port: 8080
+
+    - match: Host(`translator.home.my-uam.com`)
+      kind: Rule
+      services:
+        - name: frontend
+          port: 4173
+  tls:
+    secretName: zoom-translation-certificate-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: zoom-translation-ingress-certificate
+spec:
+  secretName: zoom-translation-certificate-secret
+  issuerRef:
+    name: digitalocean-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - translator.home.my-uam.com
