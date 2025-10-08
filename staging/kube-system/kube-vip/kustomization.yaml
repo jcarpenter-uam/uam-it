@@ -4,4 +4,5 @@ namespace: kube-system
 resources:
   - rbac.yaml
   - daemonset.yaml
+  - cloud-provider.yaml
   - configmap.yaml
