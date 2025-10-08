@@ -10,3 +10,8 @@ talos/
 .env
 unsealed-secret.yaml
 flux-ssh-key*
+
+# TEMP
+config.json
+jcarpenter-uam-ghcr-secret.yaml
+test.txt
