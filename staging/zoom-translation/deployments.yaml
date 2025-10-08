@@ -16,7 +16,7 @@ spec:
         - name: jcarpenter-uam-ghcr-secret
       containers:
         - name: zoom-translation-backend
-          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-backend:v1.0 # {"$imagepolicy": "flux-system:zoom-translation-backend"}
+          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-backend:v1.0.0 # {"$imagepolicy": "flux-system:zoom-translation-backend"}
           ports:
             - containerPort: 8000
           envFrom:
