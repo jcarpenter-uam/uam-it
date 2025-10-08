@@ -41,7 +41,7 @@ spec:
         - name: jcarpenter-uam-ghcr-secret
       containers:
         - name: zoom-translation-frontend
-          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-frontend:v1.0 # {"$imagepolicy": "flux-system:zoom-translation-frontend"}
+          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-frontend:v1.0.0 # {"$imagepolicy": "flux-system:zoom-translation-frontend"}
           ports:
             - containerPort: 4173
 ---
@@ -63,7 +63,7 @@ spec:
         - name: jcarpenter-uam-ghcr-secret
       containers:
         - name: zoom-translation-rtms
-          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-rtms:v1.0 # {"$imagepolicy": "flux-system:zoom-translation-rtms"}
+          image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-rtms:v1.0.0 # {"$imagepolicy": "flux-system:zoom-translation-rtms"}
           ports:
             - containerPort: 8080
           envFrom:
