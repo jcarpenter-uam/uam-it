@@ -10,7 +10,3 @@ talos/
 .env
 *unsealed*
 flux-ssh-key*
-
-# TEMP
-config.json
-test.txt
