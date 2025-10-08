@@ -6,6 +6,8 @@ metadata:
 spec:
   image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-frontend
   interval: 5m
+  secretRef:
+    name: ghcr-credentials
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
@@ -15,6 +17,8 @@ metadata:
 spec:
   image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-backend
   interval: 5m
+  secretRef:
+    name: ghcr-credentials
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
@@ -24,3 +28,5 @@ metadata:
 spec:
   image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-rtms
   interval: 5m
+  secretRef:
+    name: ghcr-credentials
