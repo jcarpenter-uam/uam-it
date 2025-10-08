@@ -4,3 +4,4 @@ resources:
   - update-policy.yaml
   - update-registry.yaml
   - update-automation.yaml
+  - sealed-ghcr-credentials.yaml
