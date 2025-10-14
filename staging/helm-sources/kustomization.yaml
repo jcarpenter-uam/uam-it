@@ -5,3 +5,4 @@ resources:
   - sealed-secrets-repo.yaml
   - traefik-repo.yaml
   - cert-manager-repo.yaml
+  - longhorn-repo.yaml
