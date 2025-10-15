@@ -1,23 +1,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
-  name: zoom-translation-frontend
+  name: zoom-translation-server
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: zoom-translation-frontend-image
-  policy:
-    semver:
-      range: ">=1.0.0"
----
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImagePolicy
-metadata:
-  name: zoom-translation-backend
-  namespace: flux-system
-spec:
-  imageRepositoryRef:
-    name: zoom-translation-backend-image
+    name: zoom-translation-server-image
   policy:
     semver:
       range: ">=1.0.0"
