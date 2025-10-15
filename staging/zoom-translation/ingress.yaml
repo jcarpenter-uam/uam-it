@@ -12,7 +12,7 @@ spec:
         - name: zoom-translation-rtms
           port: 8080
 
-    - match: Host(`translator.home.my-uam.com`) && PathPrefix(`/ws/`)
+    - match: Host(`translator.home.my-uam.com`)
       kind: Rule
       services:
         - name: zoom-translation-server
