@@ -1,5 +1,10 @@
 # Talos Setup
 
+Here are the system extensions needed for our configuration:
+
+- `siderolabs/iscsi-tools`
+- `siderolabs/util-linux-tools`
+
 Follow these steps in order to configure and bootstrap your Talos cluster. Official docs can be found [here](https://www.talos.dev/v1.11/talos-guides/install/virtualized-platforms/proxmox/).
 
 1.  **Find Your Virtio Disk**
