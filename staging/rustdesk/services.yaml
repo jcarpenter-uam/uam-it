@@ -19,10 +19,6 @@ spec:
       port: 21116
       targetPort: 21116
       protocol: UDP
-    - name: api
-      port: 21114
-      targetPort: 21114
-      protocol: TCP
 ---
 apiVersion: v1
 kind: Service
