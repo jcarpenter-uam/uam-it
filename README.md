@@ -17,6 +17,7 @@ For the server rack in GDC, see `./instructions` for detailed documentation
   <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform"/>
   <img src="https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible"/>
   <img src="https://img.shields.io/badge/Sealed Secrets-0D3ECC?style=for-the-badge&logoColor=white" alt="Sealed Secrets"/>
+  <img src="https://img.shields.io/badge/Longhorn-4A154B?style=for-the-badge&logoColor=white" alt="Longhorn"/>
 </p>
 
 ---
