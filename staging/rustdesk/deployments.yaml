@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hbbs-deployment # (ID/Rendezvous Server)
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hbbs
+  template:
+    metadata:
+      labels:
+        app: hbbs
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: hbbs
+          image: rustdesk/rustdesk-server:latest
+          command: ["hbbs"]
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          ports:
+            - containerPort: 21115 # For NAT type testing
+            - containerPort: 21116 # For TCP hole punching and web client
+            - containerPort: 21116 # For UDP hole punching
+              protocol: UDP
+          volumeMounts:
+            - name: rustdesk-data
+              mountPath: /root
+      volumes:
+        - name: rustdesk-data
+          persistentVolumeClaim:
+            claimName: rustdesk-data-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hbbr-deployment # (Relay Server)
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hbbr
+  template:
+    metadata:
+      labels:
+        app: hbbr
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: hbbr
+          image: rustdesk/rustdesk-server:latest
+          command: ["hbbr"]
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          ports:
+            - containerPort: 21117 # For TCP relay
+            - containerPort: 21118 # For Web client
+            - containerPort: 21119 # For Web client
+          volumeMounts:
+            - name: rustdesk-data
+              mountPath: /root
+      volumes:
+        - name: rustdesk-data
+          persistentVolumeClaim:
+            claimName: rustdesk-data-pvc
