@@ -25,8 +25,8 @@ Follow these steps in order to configure and bootstrap your Talos cluster. Offic
 
 3.  **(Optional) Modify Control Plane Config**
 
-    > For my setup, I wanted only 3 control plane nodes.
-    > To do this, uncomment the very last line in the `controlplane.yaml` config file to allow scheduling pods on the control plane nodes as explained [here](https://www.talos.dev/v1.11/talos-guides/howto/workers-on-controlplane/).
+    > Since we only have control-plane nones we need to be able to schedule workloads on them, to allow scheduling pods on the control plane nodes follow these [docs](https://www.talos.dev/v1.11/talos-guides/howto/workers-on-controlplane/).
+    > I also wanted to be sure to deploy the metrics server to see CPU/MEM usage within K9s by following these [docs](https://docs.siderolabs.com/kubernetes-guides/monitoring-and-observability/deploy-metrics-server).
 
 4.  **Apply the Config to All Nodes**
 
