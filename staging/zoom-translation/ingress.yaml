@@ -6,12 +6,6 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`translator.home.my-uam.com`) && PathPrefix(`/zoom`)
-      kind: Rule
-      services:
-        - name: zoom-translation-rtms
-          port: 8080
-
     - match: Host(`translator.home.my-uam.com`)
       kind: Rule
       services:

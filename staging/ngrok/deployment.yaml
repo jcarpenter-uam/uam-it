@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngrok-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ngrok
+  template:
+    metadata:
+      labels:
+        app: ngrok
+    spec:
+      containers:
+        - name: ngrok
+          image: ngrok/ngrok:latest
+          command: ["ngrok", "http"]
+          args:
+            - "zoom-translation-rtms.zoom-translation:8080"
+          env:
+            - name: NGROK_AUTHTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ngrok-auth-token
+                  key: AUTHTOKEN
+          ports:
+            - name: ngrok-web
+              containerPort: 4040

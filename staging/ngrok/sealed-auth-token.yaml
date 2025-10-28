@@ -1,0 +1,13 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: ngrok-auth-token
+  namespace: ngrok
+spec:
+  encryptedData:
+    AUTHTOKEN: AgBHocjNIOxBc/wY6SiuW4S+ylOcd3vsTxSfOd/aZB2/AOROY6WLbABcnrHkWDHCN1LZFM1dZW5UbCJhNZzuOCeOszw3UUGd+2u7/aY+8xgaFAA4A76CCvufh/JViISyeNBLFmgb/0g2Npzn5ZQWRyySp1iTNTIDGYt4Qq3xhOI7mErX00v7A9y+76Ne4z5Xd2lnowSARgUsHefpDxBCXACiW/QmTLn2HszNQ9U4oWq2sg+OUi4m2rLoOMvUesopddgLmN5Nqy2p4xIoKV20Om0DfkUrY1yQk78ns9BfhJYp90x5jPZZgmPfLE/oCImKCB/PwgexsJzr997Q8Cq076SemSGww+K+4RamKabei6FdCibLf3VQcMvuKpgwgnPmIq6trr3fSYKltfQ/+OeLUjiJ4kzYxWjDb2nU1FpaH1sq9pnvWeSfyWDDdoqj189xgzhfiZjSy5R+uhQ0rv9Vlwgs+ucnNbkh8KgOZKu52r2nuz+JGRL8O6pz2DY8U2vzgwMeVDaqsD7LacdinnT2yCcMoFKvgnABSI1x8MW0r5dofS85soM/7Vj1q2sH96i1DZ2VPmzfPPUTuBXMY3+ySonLuDHM+mDrWLTOJdnh0KyKAQs1ELGzg1rXe7ftl0jZ2vbGzcQ1iD7nhzYTNTVMuFgzT2ecjw6bzIHF7LFQdH2Ppe3L8PebbpGeyz7MaDficBdrmyR94/lX8npIMNAMydP8DaJYA8sjKBfUWHWkrBKyPQf7aKAY+OGnpZ0Js1iuImCT
+  template:
+    metadata:
+      name: ngrok-auth-token
+      namespace: ngrok
+    type: Opaque
