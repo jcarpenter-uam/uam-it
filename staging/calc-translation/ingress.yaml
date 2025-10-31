@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: zoom-translation-ingress
+  name: calc-translation-ingress
 spec:
   entryPoints:
     - websecure
@@ -9,17 +9,17 @@ spec:
     - match: Host(`translator.home.my-uam.com`)
       kind: Rule
       services:
-        - name: zoom-translation-server
+        - name: calc-translation-server
           port: 8000
   tls:
-    secretName: zoom-translation-certificate-secret
+    secretName: calc-translation-certificate-secret
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: zoom-translation-ingress-certificate
+  name: calc-translation-ingress-certificate
 spec:
-  secretName: zoom-translation-certificate-secret
+  secretName: calc-translation-certificate-secret
   issuerRef:
     name: digitalocean-clusterissuer
     kind: ClusterIssuer

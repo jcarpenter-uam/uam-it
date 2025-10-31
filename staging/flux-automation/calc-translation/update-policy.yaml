@@ -1,11 +1,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
-  name: zoom-translation-server
+  name: calc-translation-server
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: zoom-translation-server-image
+    name: calc-translation-server-image
   policy:
     semver:
       range: ">=1.0.0"
@@ -13,11 +13,11 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
-  name: zoom-translation-rtms
+  name: calc-translation-rtms
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: zoom-translation-rtms-image
+    name: calc-translation-rtms-image
   policy:
     semver:
       range: ">=1.0.0"

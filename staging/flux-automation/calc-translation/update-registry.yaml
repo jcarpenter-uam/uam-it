@@ -1,10 +1,10 @@
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
-  name: zoom-translation-server-image
+  name: calc-translation-server-image
   namespace: flux-system
 spec:
-  image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-server
+  image: ghcr.io/jcarpenter-uam/calc-translation/translation-server
   interval: 5m
   secretRef:
     name: ghcr-credentials
@@ -12,10 +12,10 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
-  name: zoom-translation-rtms-image
+  name: calc-translation-rtms-image
   namespace: flux-system
 spec:
-  image: ghcr.io/jcarpenter-uam/zoom-translation/zoom-translation-rtms
+  image: ghcr.io/jcarpenter-uam/calc-translation/zoom-rtms
   interval: 5m
   secretRef:
     name: ghcr-credentials

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-translation-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calc-translation-server
+  template:
+    metadata:
+      labels:
+        app: calc-translation-server
+    spec:
+      imagePullSecrets:
+        - name: jcarpenter-uam-ghcr-secret
+      containers:
+        - name: translation-server
+          image: ghcr.io/jcarpenter-uam/calc-translation/translation-server:v1.0.8 # {"$imagepolicy": "flux-system:calc-translation-server"}
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: calc-translation-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-translation-rtms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calc-translation-rtms
+  template:
+    metadata:
+      labels:
+        app: calc-translation-rtms
+    spec:
+      imagePullSecrets:
+        - name: jcarpenter-uam-ghcr-secret
+      containers:
+        - name: calc-translation-rtms
+          image: ghcr.io/jcarpenter-uam/calc-translation/zoom-rtms:v1.0.9 # {"$imagepolicy": "flux-system:calc-translation-rtms"}
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: calc-translation-secrets
